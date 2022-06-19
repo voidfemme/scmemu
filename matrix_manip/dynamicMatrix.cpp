@@ -3,98 +3,79 @@
 using namespace std;
 
 // Some nice formatting
-void formatFun(){
+void FormatFun(){
 	cout << setw(55) << setfill('-') << "" << endl;
 }
 
 // Let's create I!
-void MatrixI(int** dynMatrix, int mRows, int mColumns){
-	formatFun();
-	for(int i=0;i<mRows;i++){
-		dynMatrix[i] = new int[mColumns];
-		for(int j=0;j<mColumns;j++){
+void MatrixI(int** dynamic_2d_array, int matrix_rows_, int matrix_columns_){
+	for(int i=0;i<matrix_rows_;i++){
+		dynamic_2d_array[i] = new int[matrix_columns_];
+		for(int j=0;j<matrix_columns_;j++){
 			if(i==j){
-				dynMatrix[i][j] = 1;
+				dynamic_2d_array[i][j] = 1;
 			}	
 			else{
-				dynMatrix[i][j] = 0;
+				dynamic_2d_array[i][j] = 0;
 			}
 		}
 	}
 }
 
 // Matrix population 
-void populateMatrix(int** dynMatrix, int mRows, int mColumns){
-	formatFun();
-	for(int i=0;i<mRows;i++){
-		dynMatrix[i] = new int[mColumns];
-		for(int j=0;j<mColumns;j++){
+void SetMatrixValues(int** dynamic_2d_array, int matrix_rows_, int matrix_columns_){
+	FormatFun();
+	for(int i=0;i<matrix_rows_;i++){
+		dynamic_2d_array[i] = new int[matrix_columns_];
+		for(int j=0;j<matrix_columns_;j++){
 			cout << "Enter value [" << i << "][" << j << "]: ";
-			cin >> dynMatrix[i][j];
+			cin >> dynamic_2d_array[i][j];
 		}
 	}
 }
 
-void printMatrixValues(int** dynMatrix, int mRows, int mColumns){
-	formatFun();
-	for(int i=0;i<mRows;i++){
-		for(int j=0;j<mColumns;j++){
-			cout << "[" << dynMatrix[i][j]<< "] ";
+void PrintMatrixValues(int** dynamic_2d_array, int matrix_rows_, int matrix_columns_){
+	FormatFun();
+	for(int i=0;i<matrix_rows_;i++){
+		for(int j=0;j<matrix_columns_;j++){
+			cout << "[" << dynamic_2d_array[i][j]<< "] ";
 		}
 		cout << endl;
 	}
-	formatFun();
+	FormatFun();
 }
-
-// A leftover function from an old school assignment to use as a template:
-//void arraySummary(int* p, int arr_sz){
-//	int largestNum = p[0];
-//	int smallestNum = p[0];
-//	for(int i=0;i<arr_sz;i++){
-//		if(p[i] >= largestNum){
-//			largestNum = p[i];
-//		}
-//		if(p[i] <= smallestNum){
-//			smallestNum = p[i];
-//		}
-//	}
-//	cout << "The largest number you entered was: " << largestNum << endl;
-//	formatFun();
-//	cout << "The smallest number you entered was: " << smallestNum << endl;
-//	formatFun();
-//}
 
 int main(){
 
 	// Dynamic Matrix Allocations:
-	int mRows = 0;
-	int mColumns = 0;
-	int** dynMatrix = new int*[0];
+	int matrix_rows_ = 0;
+	int matrix_columns_ = 0;
+	int** dynamic_2d_array = new int*[0];
 	char printI;
 
 	cout << "Array population 2: multidimensional boogaloo" << endl;
-	formatFun();
+	FormatFun();
 	cout << "Enter the number of matrix rows: ";
-	cin >> mRows;
+	cin >> matrix_rows_;
 	cout << "Enter the number of Matrix columns: ";
-	cin >> mColumns;
+	cin >> matrix_columns_;
 
-	populateMatrix(dynMatrix,mRows,mColumns);
-	printMatrixValues(dynMatrix,mRows,mColumns);
+	SetMatrixValues(dynamic_2d_array,matrix_rows_,matrix_columns_);
+	PrintMatrixValues(dynamic_2d_array,matrix_rows_,matrix_columns_);
 
-	if(mRows == mColumns){
+	if(matrix_rows_ == matrix_columns_){
 		cout << "Reset values and print I for a matrix of size ";
-	        cout << mRows << "X" << mColumns << "? ";
+	        cout << matrix_rows_ << "X" << matrix_columns_ << "? ";
 		cin >> printI;
 		if(printI == 'y'){
-				MatrixI(dynMatrix,mRows,mColumns);
-				printMatrixValues(dynMatrix,mRows,mColumns);
+				MatrixI(dynamic_2d_array,matrix_rows_,matrix_columns_);
+				PrintMatrixValues(dynamic_2d_array,matrix_rows_,matrix_columns_);
 		}
 	}
 	else{
 		cout << "matrix I cannot be generated on the specified matrix size." << endl;
 		cout << "good bye!" << endl;
-		formatFun();
+		FormatFun();
 	}
 	return 0;
 }
