@@ -1,6 +1,6 @@
 # SCMEMU
 ## A Subtractive Color Mixing Emulator
-###Background
+### Background
 I came up with the idea for SCMEMU after using a photo color inversion program. In school, I learned that the opposite of red is green, and the opposite of blue is orange. This is not so, when it comes to mixing colored light. A simple algorithm for inverting 256-bit color codes goes something like this:<br />
 `256-R, 256-G, 256-B`
 For instance, if you want to invert red (#ff0000, aka 255,0,0), this equation will get you a lovely light blue (#00ffff), rather than green (#00ff00).<br /><br />
